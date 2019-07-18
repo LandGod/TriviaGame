@@ -1,1 +1,1 @@
-A trivia game which quizzed the user about *tbd*.
+A trivia game which quizzes the user about *tbd*.
