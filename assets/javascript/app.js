@@ -10,6 +10,7 @@ class Deck {
         this.questions = Object.keys(qaArray);
         this.answers = qaArray;
         this.length = this.questions.length;
+        this.key = aArray;
 
         // The shuffle method shuffles this.questions into a random order
         this.shuffle = function() {
@@ -114,18 +115,24 @@ class Game {
         // Function for accepting a correct answer selection by the user.
         // Does almost the same thing as this.fail, but also increments this.score.
         this.pass = function() {
+            console.log('User was correct!')
             this.feedback.html('<h3>CORRECT!</h3>');
             clearInterval(this.currentTimer);
             this.score++;
-            setTimeout(this.nextQ, 3000);
+            setTimeout(() => this.nextQ(), 3000);
         };
 
         // Checks if the button the user pressed coresponds to the right or wrong answer
         // Stops the timer
         // Calls Game.pass or Game.fail accordingly.
         this.guess = function(value) {
-            console.log(`User guessed ${value}`);
-            // TODO
+            // The value returned in 'value' will be offset by + 1 compared to the index value of the answer we're taking from deck.key, so we need decrement value by 1
+            if (parseInt(value) - 1 == this.deck.key[this.deck.questions[this.currentQ]]) {
+                console.log('if statement goes to pass');
+                this.pass()} 
+                else {
+                    console.log('if statement goes to fail');
+                    this.fail(true)};
 
         };
 
