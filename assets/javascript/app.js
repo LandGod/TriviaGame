@@ -81,17 +81,18 @@ class Game {
             this.currentQ++;
 
             // If we've already completed the last question in the deck
-            if (this.currentQ > this.length) {this.gameEnd(); return;};
+            if (this.currentQ > this.length) {this.gameEnd(); conosole.log('Game end condition met!'); return;};
 
             // Else setup a new turn
             // Blank out feedback div
             this.feedback.html(" ");
             //Loop through answer buttons and assign to each a coresponding answer from the deck (using curret question as index to deck)
             this.qField.html(`${this.deck.questions[this.currentQ]}`);
-            for (let i = 0; i < 4; i++) {
+            for (let i = 1; i < 5; i++) {
                 this.as[i].html(`${this.deck.answers[this.deck.questions[this.currentQ]][i]}`);
             };
             // Start the timer
+            console.log('Starting timer!');
             this.timerStart();
 
         };
@@ -127,5 +128,6 @@ testDeck = new Deck('test', {
 testGame = new Game(testDeck,10);
 
 $(document).ready(function(){
-    testGame.nextQ;
+    console.log('Commencing game.')
+    testGame.nextQ();
 });
