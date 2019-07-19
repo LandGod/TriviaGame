@@ -119,6 +119,16 @@ class Game {
             this.score++;
             setTimeout(this.nextQ, 3000);
         };
+
+        // Checks if the button the user pressed coresponds to the right or wrong answer
+        // Stops the timer
+        // Calls Game.pass or Game.fail accordingly.
+        this.guess = function() {
+        
+            // TODO
+
+        };
+
     };
 };
 
@@ -134,9 +144,13 @@ testDeck = new Deck('test', {
     'Arrays start at ___.': 3
 }, 1);
 
-testGame = new Game(testDeck,3);
+var currentGame = new Game(testDeck,3);
 
 $(document).ready(function(){
     console.log('Commencing game.')
-    testGame.nextQ();
+    currentGame.nextQ();
+    // Add click handlers to all answer buttons. Answer button array starts at 1 and has 4 elements in it.
+    for (let i = 1; i < 5; i++) {
+        currentGame.as[i].click();
+    }
 });
