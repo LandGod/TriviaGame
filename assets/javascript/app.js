@@ -52,16 +52,20 @@ class Game {
             // Because execution of code by timers may be delayed, here we'll update the DOM with the 
             // actual time elapsed since starting the timer, at the time of the current execution.
             // This way even if code executing is delayed and even if an entire timer trigger is skipped,
-            // the timer will never lose time (although it may occasionally skip).
+            // the timer will never lose time (although it may occasionally skip numbers on the display).
+            // NOTE: Arrow notation must be used when calling functions within the timerStart method to prevent leaving context of the game object and ruining our calls to 'this'
             let start = Date.now();
             let now = 0;
-            let that = this;
-            let newTimer = setInterval(function() {
+            console.log(`this:`);
+            console.log(this);
+            let newTimer = setInterval(() => {
                 let delta = Date.now() - start; // Milliseconds elapsed since initializing start
                 now = Math.floor(delta/1000); // Return time in whole seconds
-                that.tField.html(`${that.time - now}`); // Update countdown timer on index.html with current time
-                if (now >= that.time) {
-                    that.fail();
+                this.tField.html(`${this.time - now}`); // Update countdown timer on index.html with current time
+                if (now >= this.time) {
+                    console.log('About to call "this"');
+                    console.log(this);
+                    () => fail;
                 };
             }, 100);
 
@@ -88,7 +92,7 @@ class Game {
             console.log(`Inside Game.nextQ, this = ${this} & this.feedback = ${this.feedback}`);
             console.log(this);
             console.log(this.feedback);
-            this.feedback.html(" "); // BUG: Somehow when we get here after the first time this.feedback has stopped being a jQuery object. What happend???
+            this.feedback.html(" "); 
             //Loop through answer buttons and assign to each a coresponding answer from the deck (using curret question as index to deck)
             this.qField.html(`${this.deck.questions[this.currentQ]}`);
             for (let i = 1; i < 5; i++) {
