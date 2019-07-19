@@ -3,7 +3,8 @@ class Deck {
     // Deck objects should be a collection of questions and answers.
     // Difficulty should be a value between 1 and 3 inclusive. 1: easy, 2: med, 3: hard
     // qaArray must be an array of questions and answers in the format: {'question':['answer','answer','answer','answer']}
-    constructor(name, qaArray, difficulty) {
+    // aArray should be a map of qaArray containing the list index of the correct answer for each question indexed by question. Format {'question':1}
+    constructor(name, qaArray, aArray, difficulty) {
         this.name = name;
         this.difficulty = difficulty;
         this.questions = Object.keys(qaArray);
@@ -127,6 +128,10 @@ testDeck = new Deck('test', {
     'Who is the current vice president of the United States?': ['Jim Gaffigan', 'Mike Pence', 'Harvey Milk', 'Lizzo'],
     'What is 2+2?':['4','5','22', '7'],
     'Arrays start at ___.':['1','-1','2','0']
+}, {
+    'Who is the current vice president of the United States?': 1,
+    'What is 2+2?': 0,
+    'Arrays start at ___.': 3
 }, 1);
 
 testGame = new Game(testDeck,3);
