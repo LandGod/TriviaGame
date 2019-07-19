@@ -77,8 +77,9 @@ class Game {
 
         // Function for failing a question, due to timeout or wrong answer.
         // Prints message to DOM, stops the timer, and then waits 3 seconds befor calling nextQ.
-        this.fail = function() {
-            this.feedback.html('<h3>INCORRECT!</h3>');
+        this.fail = function(click) {
+            if (click) {this.feedback.html('<h3>INCORRECT!</h3>')
+            } else {this.feedback.html('<h3>Time is up!</h3>');};
             clearInterval(this.currentTimer);
             setTimeout(this.nextQ, 3000);
         };
