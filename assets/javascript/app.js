@@ -53,19 +53,16 @@ class Game {
             // actual time elapsed since starting the timer, at the time of the current execution.
             // This way even if code executing is delayed and even if an entire timer trigger is skipped,
             // the timer will never lose time (although it may occasionally skip numbers on the display).
-            // NOTE: Arrow notation must be used when calling functions within the timerStart method to prevent leaving context of the game object and ruining our calls to 'this'
+            // NOTE: Arrow notation must be used when creating our anonymous function inside setInterval or else 'this' will refer to window instead of the Game object
             let start = Date.now();
             let now = 0;
-            console.log(`this:`);
-            console.log(this);
             let newTimer = setInterval(() => {
                 let delta = Date.now() - start; // Milliseconds elapsed since initializing start
                 now = Math.floor(delta/1000); // Return time in whole seconds
                 this.tField.html(`${this.time - now}`); // Update countdown timer on index.html with current time
                 if (now >= this.time) {
-                    console.log('About to call "this"');
-                    console.log(this);
-                    () => fail;
+                    console.log('Commence fail!');
+                    this.fail();
                 };
             }, 100);
 
@@ -82,6 +79,7 @@ class Game {
         this.nextQ = function() {
             //Increments this.currentQ, then updates the DOM with that question and associated answers
             // Restarts the timer
+            console.log('Commence nextQ');
             this.currentQ++;
 
             // If we've already completed the last question in the deck
@@ -89,9 +87,6 @@ class Game {
 
             // Else setup a new turn
             // Blank out feedback div
-            console.log(`Inside Game.nextQ, this = ${this} & this.feedback = ${this.feedback}`);
-            console.log(this);
-            console.log(this.feedback);
             this.feedback.html(" "); 
             //Loop through answer buttons and assign to each a coresponding answer from the deck (using curret question as index to deck)
             this.qField.html(`${this.deck.questions[this.currentQ]}`);
@@ -107,10 +102,12 @@ class Game {
         // Function for failing a question, due to timeout or wrong answer.
         // Prints message to DOM, stops the timer, and then waits 3 seconds befor calling nextQ.
         this.fail = function(click) {
+            console.log('Fail actually activated!')
             if (click) {this.feedback.html('<h3>INCORRECT!</h3>');
             } else {this.feedback.html('<h3>Time is up!</h3>');};
             clearInterval(this.currentTimer);
-            setTimeout(this.nextQ, 3000);
+            console.log('Timer cleared');
+            setTimeout(() => this.nextQ(), 3000);
         };
 
         // Function for accepting a correct answer selection by the user.
@@ -132,7 +129,7 @@ testDeck = new Deck('test', {
     'Arrays start at ___.':['1','-1','2','0']
 }, 1);
 
-testGame = new Game(testDeck,10);
+testGame = new Game(testDeck,3);
 
 $(document).ready(function(){
     console.log('Commencing game.')
