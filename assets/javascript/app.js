@@ -115,3 +115,17 @@ class Game {
         };
     };
 };
+
+
+// Test Game:
+testDeck = new Deck('test', {
+    'Who is the current vice president of the United States?': ['Jim Gaffigan', 'Mike Pence', 'Harvey Milk', 'Lizzo'],
+    'What is 2+2?':['4','5','22', '7'],
+    'Arrays start at ___.':['1','-1','2','0']
+}, 1);
+
+testGame = new Game(testDeck,10);
+
+$(document).ready(function(){
+    testGame.nextQ;
+});
