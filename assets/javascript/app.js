@@ -71,7 +71,7 @@ class Game {
         };
 
         this.gameEnd = function() {
-
+            console.log('Activating Game.gameEnd')
             //TODO: Write this
 
         };
@@ -83,7 +83,7 @@ class Game {
             this.currentQ++;
 
             // If we've already completed the last question in the deck
-            if (this.currentQ > this.length) {this.gameEnd(); conosole.log('Game end condition met!'); return;};
+            if (this.currentQ >= this.length) {this.gameEnd(); console.log('Game end condition met!'); return;};
 
             // Else setup a new turn
             // Blank out feedback div
@@ -107,7 +107,7 @@ class Game {
             } else {this.feedback.html('<h3>Time is up!</h3>');};
             clearInterval(this.currentTimer);
             console.log('Timer cleared');
-            setTimeout(() => this.nextQ(), 3000);
+            setTimeout(() => this.nextQ(), 3000); // Arrow notation to preserve this
         };
 
         // Function for accepting a correct answer selection by the user.
