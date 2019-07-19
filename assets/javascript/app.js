@@ -82,5 +82,14 @@ class Game {
             clearInterval(this.currentTimer);
             setTimeout(this.nextQ, 3000);
         };
+
+        // Function for accepting a correct answer selection by the user.
+        // Does almost the same thing as this.fail, but also increments this.score.
+        this.pass = function() {
+            this.feedback.html('<h3>CORRECT!</h3>');
+            clearInterval(this.currentTimer);
+            this.score++;
+            setTimeout(this.nextQ, 3000);
+        };
     };
 };
