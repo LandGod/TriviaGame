@@ -47,6 +47,10 @@ class Game {
 
         this.timerStart = function() {
             // Creates a new timer for this.time seconds and and then updates this.tField accordingly
+            // Because execution of code by timers may be delayed, here we'll update the DOM with the 
+            // actual time elapsed since starting the timer, at the time of the current execution.
+            // This way even if code executing is delayed and even if an entire timer trigger is skipped,
+            // the timer will never lose time (although it may occasionally skip).
             let start = Date.now();
             let now = 0;
             let that = this;
