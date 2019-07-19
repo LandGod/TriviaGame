@@ -2,7 +2,7 @@
 class Deck {
     // Deck objects should be a collection of questions and answers.
     // Difficulty should be a value between 1 and 3 inclusive. 1: easy, 2: med, 3: hard
-    // qaArray must be an array of questions and answers in the format: {'question':'answer'}
+    // qaArray must be an array of questions and answers in the format: {'question':['answer','answer','answer','answer']}
     constructor(name, qaArray, difficulty) {
         this.name = name;
         this.difficulty = difficulty;
@@ -34,9 +34,11 @@ class Game {
         // Initializing internal variables
         this.deck = deck;
         this.time = parseInt(time);
-        this.length = length || this.deck.length;
+        this.length = length || this.deck.length; 
+        if (this.length > this.deck.length) {this.length = this.deck.length};
+
         this.score = 0;
-        this.currentQ = 0; // List index of this.deck.questions we're currently at. Incremented by this.nextQ
+        this.currentQ = -1; // List index of this.deck.questions we're currently at. Incremented by this.nextQ
         this.currentTimer; // Currently running timer will always be held here
 
         // jQuery element handles
@@ -67,11 +69,30 @@ class Game {
 
         };
 
+        this.gameEnd = function() {
+
+            //TODO: Write this
+
+        };
+
         this.nextQ = function() {
             //Increments this.currentQ, then updates the DOM with that question and associated answers
             // Restarts the timer
+            this.currentQ++;
 
-            //TODO: Write this function
+            // If we've already completed the last question in the deck
+            if (this.currentQ > this.length) {this.gameEnd(); return;};
+
+            // Else setup a new turn
+            // Blank out feedback div
+            this.feedback.html(" ");
+            //Loop through answer buttons and assign to each a coresponding answer from the deck (using curret question as index to deck)
+            this.qField.html(`${this.deck.questions[this.currentQ]}`);
+            for (let i = 0; i < 4; i++) {
+                this.as[i].html(`${this.deck.answers[this.deck.questions[this.currentQ]][i]}`);
+            };
+            // Start the timer
+            this.timerStart();
 
         };
 
