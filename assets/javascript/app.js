@@ -6,7 +6,7 @@ class Deck {
     constructor(name, qaArray, difficulty) {
         this.name = name;
         this.difficulty = difficulty;
-        this.questions = qaArray.keys();
+        this.questions = Object.keys(qaArray);
         this.answers = qaArray;
         this.length = this.questions.length;
 
