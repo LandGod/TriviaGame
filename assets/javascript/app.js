@@ -58,7 +58,7 @@ class Game {
             let that = this;
             let newTimer = setInterval(function() {
                 let delta = Date.now() - start; // Milliseconds elapsed since initializing start
-                now = Math.floor(delta/100); // Return time in whole seconds
+                now = Math.floor(delta/1000); // Return time in whole seconds
                 that.tField.html(`${that.time - now}`); // Update countdown timer on index.html with current time
                 if (now >= that.time) {
                     that.fail();
@@ -85,11 +85,14 @@ class Game {
 
             // Else setup a new turn
             // Blank out feedback div
-            this.feedback.html(" ");
+            console.log(`Inside Game.nextQ, this = ${this} & this.feedback = ${this.feedback}`);
+            console.log(this);
+            console.log(this.feedback);
+            this.feedback.html(" "); // BUG: Somehow when we get here after the first time this.feedback has stopped being a jQuery object. What happend???
             //Loop through answer buttons and assign to each a coresponding answer from the deck (using curret question as index to deck)
             this.qField.html(`${this.deck.questions[this.currentQ]}`);
             for (let i = 1; i < 5; i++) {
-                this.as[i].html(`${this.deck.answers[this.deck.questions[this.currentQ]][i]}`);
+                this.as[i].html(`${this.deck.answers[this.deck.questions[this.currentQ]][i-1]}`);
             };
             // Start the timer
             console.log('Starting timer!');
@@ -100,7 +103,7 @@ class Game {
         // Function for failing a question, due to timeout or wrong answer.
         // Prints message to DOM, stops the timer, and then waits 3 seconds befor calling nextQ.
         this.fail = function(click) {
-            if (click) {this.feedback.html('<h3>INCORRECT!</h3>')
+            if (click) {this.feedback.html('<h3>INCORRECT!</h3>');
             } else {this.feedback.html('<h3>Time is up!</h3>');};
             clearInterval(this.currentTimer);
             setTimeout(this.nextQ, 3000);
