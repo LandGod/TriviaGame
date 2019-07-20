@@ -38,12 +38,24 @@ button:hover {
     color: white;
 }
 
+.wrong-guess:hover {
+    background-color: #FF1938;
+}
+
 .correct-guess {
     background-color: #ff9c00;
     color: white;
 }
 
+.correct-guess:hover {
+    background-color: #ff9c00;
+}
+
 .none-guess {
     background-color: #002F40;
     color: white;
+}
+
+.none-guess:hover {
+    background-color: #002F40;
 }
