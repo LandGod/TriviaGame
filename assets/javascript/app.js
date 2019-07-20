@@ -117,8 +117,14 @@ class Game {
         // Prints message to DOM, stops the timer, and then waits 3 seconds befor calling nextQ.
         this.fail = function(click) {
             console.log('Fail actually activated!')
-            if (click) {this.feedback.html('<h3>INCORRECT!</h3>');
-            } else {this.feedback.html('<h3>Time is up!</h3>');};
+            if (click) {
+                this.feedback.html(`<h3>INCORRECT!</h3>`);
+                $(`#a${this.deck.key[this.deck.questions[this.currentQ]] + 1}`).attr('class', this.buttonDefault);
+            } else {
+                this.feedback.html('<h3>Time is up!</h3>');
+                $('.answer').attr('class', $('.answer').attr('class') + ' none-guess')
+                $(`#a${this.deck.key[this.deck.questions[this.currentQ]] + 1}`).attr('class', this.buttonDefault);
+            };
             clearInterval(this.currentTimer);
             console.log('Timer cleared');
             setTimeout(() => this.nextQ(), 3000); // Arrow notation to preserve this
