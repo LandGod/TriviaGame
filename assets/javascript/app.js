@@ -205,6 +205,7 @@ owDeck = new Deck('Overwatch Trivia!',
     3);
 
 // Start game
+owDeck.shuffle();
 var currentGame = new Game(owDeck,10);
 
 $(document).ready(function(){
