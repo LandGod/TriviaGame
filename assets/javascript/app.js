@@ -141,7 +141,7 @@ class Game {
 
             // The value returned in 'value' will be offset by + 1 compared to the index value of the answer we're taking from deck.key, so we need decrement value by 1
             this.tField.html('--')
-            if (parseInt(value) - 1 == this.deck.key[this.deck.questions[this.currentQ]]) {
+            if (parseInt(value.val()) - 1 == this.deck.key[this.deck.questions[this.currentQ]]) {
                 console.log('if statement goes to pass');
                 this.pass()} 
                 else {
@@ -200,7 +200,7 @@ $(document).ready(function(){
     // Add click handlers to all answer buttons. Answer button array starts at 1 and has 4 elements in it.
     for (let i = 1; i < 5; i++) {
         currentGame.as[i].on('click', function() {
-            currentGame.guess($(this).val());
+            currentGame.guess($(this));
         });
     }
 });
