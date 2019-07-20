@@ -140,6 +140,7 @@ class Game {
             if (!this.turnActive) {return;} else {this.turnActive = false;};
 
             // The value returned in 'value' will be offset by + 1 compared to the index value of the answer we're taking from deck.key, so we need decrement value by 1
+            this.tField.html('--')
             if (parseInt(value) - 1 == this.deck.key[this.deck.questions[this.currentQ]]) {
                 console.log('if statement goes to pass');
                 this.pass()} 
