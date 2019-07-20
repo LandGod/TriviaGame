@@ -210,11 +210,17 @@ var currentGame = new Game(owDeck,10);
 $(document).ready(function(){
     console.log('Commencing game.')
     $('#page-title').html(`${currentGame.deck.name}`)
-    currentGame.nextQ();
     // Add click handlers to all answer buttons. Answer button array starts at 1 and has 4 elements in it.
     for (let i = 1; i < 5; i++) {
         currentGame.as[i].on('click', function() {
             currentGame.guess($(this));
         });
     }
+
+    $(document.body).click(function() {
+        currentGame.nextQ();
+        $(document.body).off();
+        
+    });
+
 });
