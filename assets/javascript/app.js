@@ -183,7 +183,7 @@ testDeck = new Deck('test trivia deck', {
 }, 1);
 
 // Overwatch Deck
-owDeck = new Deck('Overwatch Trivia!',
+owDeck = new Deck('Overwatch Trivia',
 
     {"What is Widowmaker's real name?" : ['Amélie LaCroix', 'Natasha Romanoff', 'Alison Guillard', 'Adalene LaVelle'],
     "Who is Winston named after?" : ["Winston Hill", "Winston Churchill", "Dr. Harold Winston", "Nobody"], 
