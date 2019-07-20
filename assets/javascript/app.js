@@ -48,6 +48,7 @@ class Game {
         this.tField = $('#timer'); // Display time here
         this.as = {1 : $('#a1'), 2 : $('#a2'), 3 : $('#a3'), 4 : $('#a4')}; // Answer button elements. Array starts at 1.
         this.feedback = $('#feedback'); // Location to write in 'correct'/'incorrect'
+        this.buttonDefault = "col-md-4 text-center col-12 answer rounded m-1" // Default class attribute value for answer buttons
 
         // Valid button press tracking, ie: has the user already made a guess. If the user has not made a guess yet: true.
         this.turnActive;
@@ -106,6 +107,7 @@ class Game {
             };
             // Start the timer
             console.log('Starting timer!');
+            $('.answer').attr('class', this.buttonDefault);
             this.timerStart();
             this.turnActive = true;
 
@@ -141,11 +143,16 @@ class Game {
 
             // The value returned in 'value' will be offset by + 1 compared to the index value of the answer we're taking from deck.key, so we need decrement value by 1
             this.tField.html('--')
+            $('.answer').attr('class', value.attr('class') + ' none-guess')
             if (parseInt(value.val()) - 1 == this.deck.key[this.deck.questions[this.currentQ]]) {
                 console.log('if statement goes to pass');
+                value.attr('class', this.buttonDefault);
+                value.attr('class', value.attr('class') + ' correct-guess');
                 this.pass()} 
                 else {
                     console.log('if statement goes to fail');
+                    value.attr('class', this.buttonDefault);
+                    value.attr('class', value.attr('class') + ' wrong-guess');
                     this.fail(true)};
 
         };
