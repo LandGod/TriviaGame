@@ -155,7 +155,7 @@ class Game {
 
 
 // Test Deck:
-testDeck = new Deck('test', {
+testDeck = new Deck('test trivia deck', {
     'Who is the current vice president of the United States?': ['Jim Gaffigan', 'Mike Pence', 'Harvey Milk', 'Lizzo'],
     'What is 2+2?':['4','5','22', '7'],
     'Arrays start at ___.':['1','-1','2','0']
@@ -166,7 +166,7 @@ testDeck = new Deck('test', {
 }, 1);
 
 // Overwatch Deck
-owDeck = new Deck('Overwatch',
+owDeck = new Deck('Overwatch Trivia!',
 
     {"What is Widowmaker's real name?" : ['Amélie LaCroix', 'Natasha Romanoff', 'Alison Guillard', 'Adalene LaVelle'],
     "Who is Winston named after?" : ["Winston Hill", "Winston Churchill", "Dr. Harold Winston", "Nobody"], 
@@ -195,6 +195,7 @@ var currentGame = new Game(owDeck,10);
 
 $(document).ready(function(){
     console.log('Commencing game.')
+    $('#page-title').html(`${currentGame.deck.name}`)
     currentGame.nextQ();
     // Add click handlers to all answer buttons. Answer button array starts at 1 and has 4 elements in it.
     for (let i = 1; i < 5; i++) {
