@@ -72,9 +72,15 @@ class Game {
 
         };
 
+        // Called when the last question has been asked and answered (or timed out)
+        // Deletes everything in the game box except for the title and feedback section
+        // Prints game over and the score to the feedback section
         this.gameEnd = function() {
             console.log('Activating Game.gameEnd')
-            //TODO: Write this
+            this.feedback.html(`<h3>Game Over</h3> <p>${this.score} correct answers out of a possible ${this.length}</p>`);
+            this.qField.detach();
+            this.tField.parent().detach();
+            $('.answer').detach();
 
         };
 
