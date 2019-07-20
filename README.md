@@ -9,4 +9,5 @@ This program was written in such a way that different 'decks' of quesion and ans
 
 Similarly, the time allowed for the user to answer each question is passed as an argument during construction of a Game object, making it very easy to change. 
 
+###### Adding Your Own Trivia
 If you would like to put your own trivia in the game, simply add your own deck object to the app.js file, then change the two lines of code under the comment 'Choose deck here.' By replacing the two references to 'owDeck' with the variable name pointing to your deck, you should be ready to run your own trivia game (provided that your deck is properly formatted).
