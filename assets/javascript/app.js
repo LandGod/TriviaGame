@@ -121,7 +121,7 @@ class Game {
             } else {this.feedback.html('<h3>Time is up!</h3>');};
             clearInterval(this.currentTimer);
             console.log('Timer cleared');
-            setTimeout(() => this.nextQ(), 1000); // Arrow notation to preserve this
+            setTimeout(() => this.nextQ(), 3000); // Arrow notation to preserve this
         };
 
         // Function for accepting a correct answer selection by the user.
@@ -131,7 +131,7 @@ class Game {
             this.feedback.html('<h3>CORRECT!</h3>');
             clearInterval(this.currentTimer);
             this.score++;
-            setTimeout(() => this.nextQ(), 1000);
+            setTimeout(() => this.nextQ(), 3000);
         };
 
         // Checks if the button the user pressed coresponds to the right or wrong answer
