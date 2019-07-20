@@ -49,6 +49,9 @@ class Game {
         this.as = {1 : $('#a1'), 2 : $('#a2'), 3 : $('#a3'), 4 : $('#a4')}; // Answer button elements. Array starts at 1.
         this.feedback = $('#feedback'); // Location to write in 'correct'/'incorrect'
 
+        // Valid button press tracking, ie: has the user already made a guess. If the user has not made a guess yet: true.
+        this.turnActive;
+
         this.timerStart = function() {
             // Creates a new timer for this.time seconds and and then updates this.tField accordingly
             // Because execution of code by timers may be delayed, here we'll update the DOM with the 
@@ -104,6 +107,7 @@ class Game {
             // Start the timer
             console.log('Starting timer!');
             this.timerStart();
+            this.turnActive = true;
 
         };
 
@@ -132,6 +136,9 @@ class Game {
         // Stops the timer
         // Calls Game.pass or Game.fail accordingly.
         this.guess = function(value) {
+            // If the user has already made a guess this turn, do nothing.
+            if (!this.turnActive) {return;} else {this.turnActive = false;};
+
             // The value returned in 'value' will be offset by + 1 compared to the index value of the answer we're taking from deck.key, so we need decrement value by 1
             if (parseInt(value) - 1 == this.deck.key[this.deck.questions[this.currentQ]]) {
                 console.log('if statement goes to pass');
