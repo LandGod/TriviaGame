@@ -100,7 +100,7 @@ class Game {
 
             // Else setup a new turn
             // Blank out feedback div
-            this.feedback.html(" "); 
+            this.feedback.html("<h3 style='color:rgba(0,0,0,0)'> - </h3>"); 
             //Loop through answer buttons and assign to each a coresponding answer from the deck (using curret question as index to deck)
             this.qField.html(`${this.deck.questions[this.currentQ]}`);
             for (let i = 1; i < 5; i++) {
