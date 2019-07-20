@@ -50,6 +50,9 @@ class Game {
         this.feedback = $('#feedback'); // Location to write in 'correct'/'incorrect'
         this.buttonDefault = "col-md-4 text-center col-12 answer rounded m-1" // Default class attribute value for answer buttons
 
+        // Object for easy adding of letters to answers. Array starts at 1 because it wants to match the answer element id numbers.
+        this.letterMap = {1: "A) ", 2: "B) ", 3: "C) ", 4: "D) "}
+
         // Valid button press tracking, ie: has the user already made a guess. If the user has not made a guess yet: true.
         this.turnActive;
 
@@ -104,7 +107,7 @@ class Game {
             //Loop through answer buttons and assign to each a coresponding answer from the deck (using curret question as index to deck)
             this.qField.html(`${this.deck.questions[this.currentQ]}`);
             for (let i = 1; i < 5; i++) {
-                this.as[i].html(`${this.deck.answers[this.deck.questions[this.currentQ]][i-1]}`);
+                this.as[i].html(`${this.letterMap[i]} ${this.deck.answers[this.deck.questions[this.currentQ]][i-1]}`);
             };
             // Start the timer
             console.log('Starting timer!');
