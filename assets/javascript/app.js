@@ -153,7 +153,7 @@ class Game {
 };
 
 
-// Test Game:
+// Test Deck:
 testDeck = new Deck('test', {
     'Who is the current vice president of the United States?': ['Jim Gaffigan', 'Mike Pence', 'Harvey Milk', 'Lizzo'],
     'What is 2+2?':['4','5','22', '7'],
@@ -164,7 +164,33 @@ testDeck = new Deck('test', {
     'Arrays start at ___.': 3
 }, 1);
 
-var currentGame = new Game(testDeck,3);
+// Overwatch Deck
+owDeck = new Deck('Overwatch',
+
+    {"What is Widowmaker's real name?" : ['Amélie LaCroix', 'Natasha Romanoff', 'Alison Guillard', 'Adalene LaVelle'],
+    "Who is Winston named after?" : ["Winston Hill", "Winston Churchill", "Dr. Harold Winston", "Nobody"], 
+    "Which of these character concepts was explored by Blizzard before eventually being abandoned?" : ['Jetpack Cat', 'Super Intelligent Hampster', 'Laser Snake', 'Psychic Badger'],
+    "What is Baptiste's country of origin?" : ['Cuba', 'Haiti', 'France', 'Quebec'],
+    "Widowmaker was originally kidnapped by Talon as part of a plot to kill who?" : ['Her husband', 'Her brother', 'The head of Overwatch', 'Captain Ana Amari'],
+    "Which Overwatch hero is the daughter of a founding member of Overwatch?" : ['Phara', 'Brigitte', 'Sombra', 'Both 1 and 2'],
+    "What was D.va's career before she became a Mekka pilot?" : ['Racecar Driver', 'Modle', 'Pro Gamer', 'Actress'],
+    "Before becoming 'Reaper,' Gabriel Reyes had, at one time, been referred to by what other moniker?" : ['Soldier 76', 'Soldier 24', 'Soldier 13', 'The Statueless One'],
+    "The Doomfist featured as a playable hero in Overwatch is the ____ person to carry that title." : ['First', 'Second', 'Third', 'Fourth']},
+
+    {"What is Widowmaker's real name?" : 0, 
+    "Who is Winston named after?": 2, 
+    "Which of these character concepts was explored by Blizzard before eventually being abandoned?" : 0,
+    "What is Baptiste's country of origin?" : 1, 
+    "Widowmaker was originally kidnapped by Talon as part of a plot to kill who?": 0,
+    "Which Overwatch hero is the daughter of a founding member of Overwatch?" : 3,
+    "What was D.va's career before she became a Mekka pilot?" : 2,
+    "Before becoming 'Reaper,' Gabriel Reyes had, at one time, been referred to by what other moniker?" : 1,
+    "The Doomfist featured as a playable hero in Overwatch is the ____ person to carry that title." : 2},
+
+    3);
+
+// Start game
+var currentGame = new Game(owDeck,5);
 
 $(document).ready(function(){
     console.log('Commencing game.')
