@@ -1,4 +1,6 @@
 # Overwatch Trivia
+Created by Daniel Gold
+Note that the Overwatch name and all associated characters are the property Activition-Blizzard are used in this game without permission. 
 
 
 ##### Overview
