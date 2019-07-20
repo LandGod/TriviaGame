@@ -68,6 +68,7 @@ class Game {
                 this.tField.html(`${this.time - now}`); // Update countdown timer on index.html with current time
                 if (now >= this.time) {
                     console.log('Commence fail!');
+                    this.turnActive = false;
                     this.fail();
                 };
             }, 100);
