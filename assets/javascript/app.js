@@ -170,6 +170,7 @@ class Game {
     };
 };
 
+// Decks go here:
 
 // Test Deck:
 testDeck = new Deck('test trivia deck', {
@@ -182,7 +183,7 @@ testDeck = new Deck('test trivia deck', {
     'Arrays start at ___.': 3
 }, 1);
 
-// Overwatch Deck
+//Overwatch Deck
 owDeck = new Deck('Overwatch Trivia',
 
     {"What is Widowmaker's real name?" : ['Amélie LaCroix', 'Natasha Romanoff', 'Alison Guillard', 'Adalene LaVelle'],
@@ -207,10 +208,12 @@ owDeck = new Deck('Overwatch Trivia',
 
     3);
 
-// Start game
-owDeck.shuffle();
-var currentGame = new Game(owDeck,10);
+// Choose deck here
+owDeck.shuffle(); // Shuffle it
+var currentGame = new Game(owDeck,10); // Create game object with chosen deck
 
+
+// Run Game (no need to eddit this:):
 $(document).ready(function(){
     console.log('Commencing game.')
     $('#page-title').html(`${currentGame.deck.name}`)
