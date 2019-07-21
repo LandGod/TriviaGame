@@ -224,9 +224,9 @@ $(document).ready(function(){
         });
     }
 
-    $(document.body).click(function() {
+    $(document).click(function() {
         currentGame.nextQ();
-        $(document.body).off();
+        $(document).off();
         
     });
 
