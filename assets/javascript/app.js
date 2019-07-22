@@ -194,7 +194,8 @@ owDeck = new Deck('Overwatch Trivia',
     "Which Overwatch hero is the daughter of a founding member of Overwatch?" : ['Phara', 'Brigitte', 'Sombra', 'Both A and B'],
     "What was D.va's career before she became a Mekka pilot?" : ['Racecar Driver', 'Modle', 'Pro Gamer', 'Actress'],
     "Before becoming 'Reaper,' Gabriel Reyes had, at one time, been referred to by what other moniker?" : ['Soldier 76', 'Soldier 24', 'Soldier 13', 'The Statueless One'],
-    "The Doomfist featured as a playable hero in Overwatch is the ____ person to carry that title." : ['First', 'Second', 'Third', 'Fourth']},
+    "The 'Doomfist' featured as a playable hero in Overwatch is the ____ person to carry that title." : ['First', 'Second', 'Third', 'Fourth'],
+    "Ashe is the leader of the _______ Gang." : ['Rough Riders', 'Omnicca', 'Robertson', 'Deadlock']},
 
     {"What is Widowmaker's real name?" : 0, 
     "Who is Winston named after?": 2, 
@@ -204,7 +205,8 @@ owDeck = new Deck('Overwatch Trivia',
     "Which Overwatch hero is the daughter of a founding member of Overwatch?" : 3,
     "What was D.va's career before she became a Mekka pilot?" : 2,
     "Before becoming 'Reaper,' Gabriel Reyes had, at one time, been referred to by what other moniker?" : 1,
-    "The Doomfist featured as a playable hero in Overwatch is the ____ person to carry that title." : 2},
+    "The 'Doomfist' featured as a playable hero in Overwatch is the ____ person to carry that title." : 2,
+    "Ashe is the leader of the _______ Gang." : 3},
 
     3);
 
