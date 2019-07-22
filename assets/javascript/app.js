@@ -212,7 +212,7 @@ owDeck = new Deck('Overwatch Trivia',
 
 // Choose deck here
 owDeck.shuffle(); // Shuffle it
-var currentGame = new Game(owDeck,10); // Create game object with chosen deck
+var currentGame = new Game(owDeck,15); // Create game object with chosen deck
 
 
 // Run Game (no need to eddit this:):
