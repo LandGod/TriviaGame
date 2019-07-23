@@ -1,25 +1,31 @@
+class Card {
+
+    constructor(question, answers, correctAnswer) {
+        this.question = question;
+        this.answers = answers;
+        this.correctAnswer = this.answers.indexOf(correctAnswer);
+    }
+};
+
 
 class Deck {
     // Deck objects should be a collection of questions and answers.
     // Difficulty should be a value between 1 and 3 inclusive. 1: easy, 2: med, 3: hard
     // qaArray must be an array of questions and answers in the format: {'question':['answer','answer','answer','answer']}
     // aArray should be a map of qaArray containing the list index of the correct answer for each question indexed by question. Format {'question':1}
-    constructor(name, qaArray, aArray, difficulty) {
+    constructor(name, cardArray) {
         this.name = name;
-        this.difficulty = difficulty;
-        this.questions = Object.keys(qaArray);
-        this.answers = qaArray;
-        this.length = this.questions.length;
-        this.key = aArray;
+        this.cards = cardArray
+        this.length = cardArray.length;
 
         // The shuffle method shuffles this.questions into a random order
         this.shuffle = function() {
             let oldval, shuffi;
-            for (let i = 0; i < this.questions.length; i++) {
+            for (let i = 0; i < this.length; i++) {
                 shuffi = Math.round(Math.random() * i);
-                oldval = this.questions[i];
-                this.questions[i] = this.questions[shuffi];
-                this.questions[shuffi] = oldval;
+                oldval = this.cards[i];
+                this.cards[i] = this.cards[shuffi];
+                this.cards[shuffi] = oldval;
             };
         };
     }
@@ -105,9 +111,9 @@ class Game {
             // Blank out feedback div
             this.feedback.html("<h3 style='color:rgba(0,0,0,0)'> - </h3>"); 
             //Loop through answer buttons and assign to each a coresponding answer from the deck (using curret question as index to deck)
-            this.qField.html(`${this.deck.questions[this.currentQ]}`);
+            this.qField.html(`${this.deck.cards[this.currentQ].question}`);
             for (let i = 1; i < 5; i++) {
-                this.as[i].html(`${this.letterMap[i]} ${this.deck.answers[this.deck.questions[this.currentQ]][i-1]}`);
+                this.as[i].html(`${this.letterMap[i]} ${this.deck.cards[this.currentQ].answers[i-1]}`);
             };
             // Start the timer
             console.log('Starting timer!');
@@ -123,11 +129,11 @@ class Game {
             console.log('Fail actually activated!')
             if (click) {
                 this.feedback.html(`<h3>INCORRECT!</h3>`);
-                $(`#a${this.deck.key[this.deck.questions[this.currentQ]] + 1}`).attr('class', this.buttonDefault);
+                $(`#a${this.deck.cards[this.currentQ].correctAnswer + 1}`).attr('class', this.buttonDefault);
             } else {
                 this.feedback.html('<h3>Time is up!</h3>');
                 $('.answer').attr('class', $('.answer').attr('class') + ' none-guess')
-                $(`#a${this.deck.key[this.deck.questions[this.currentQ]] + 1}`).attr('class', this.buttonDefault);
+                $(`#a${this.deck.cards[this.currentQ].correctAnswer + 1}`).attr('class', this.buttonDefault);
             };
             clearInterval(this.currentTimer);
             console.log('Timer cleared');
@@ -154,7 +160,7 @@ class Game {
             // The value returned in 'value' will be offset by + 1 compared to the index value of the answer we're taking from deck.key, so we need decrement value by 1
             this.tField.html('--')
             $('.answer').attr('class', value.attr('class') + ' none-guess')
-            if (parseInt(value.val()) - 1 == this.deck.key[this.deck.questions[this.currentQ]]) {
+            if (parseInt(value.val()) - 1 == this.deck.cards[this.currentQ].correctAnswer) {
                 console.log('if statement goes to pass');
                 value.attr('class', this.buttonDefault);
                 value.attr('class', value.attr('class') + ' correct-guess');
@@ -173,15 +179,11 @@ class Game {
 // Decks go here:
 
 // Test Deck:
-testDeck = new Deck('test trivia deck', {
-    'Who is the current vice president of the United States?': ['Jim Gaffigan', 'Mike Pence', 'Harvey Milk', 'Lizzo'],
-    'What is 2+2?':['4','5','22', '7'],
-    'Arrays start at ___.':['1','-1','2','0']
-}, {
-    'Who is the current vice president of the United States?': 1,
-    'What is 2+2?': 0,
-    'Arrays start at ___.': 3
-}, 1);
+testDeck = new Deck('test trivia deck', [
+    new Card('Who was the 42nd POTUS?',['Barack Obama','Bill Clinton','Ricky Boby','Hillary Clinton'],'Barack Obama'),
+    new Card('What is 2+2?',['1','2','3','4'],'4'),
+    new Card('Say my name.',['Heimler','Greg','Heisenberg','Walter'],'Heisenberg'),
+]);
 
 //Overwatch Deck
 owDeck = new Deck('Overwatch Trivia',
@@ -211,8 +213,8 @@ owDeck = new Deck('Overwatch Trivia',
     3);
 
 // Choose deck here
-owDeck.shuffle(); // Shuffle it
-var currentGame = new Game(owDeck,15); // Create game object with chosen deck
+testDeck.shuffle(); // Shuffle it
+var currentGame = new Game(testDeck,15); // Create game object with chosen deck
 
 
 // Run Game (no need to eddit this:):
