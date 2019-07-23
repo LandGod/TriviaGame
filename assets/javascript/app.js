@@ -192,36 +192,24 @@ testDeck = new Deck('test trivia deck', [
     new Card('Say my name.','Heisenberg',['Heimler','Greg','Walter']),
 ]);
 
-//Overwatch Deck
-owDeck = new Deck('Overwatch Trivia',
+// Overwatch Deck
+owDeck = new Deck ('Overwatch Trivia',[
+    new Card ("What is Widowmaker's real name?","Amélie LaCroix",['Natasha Romanoff', 'Alison Guillard', 'Adalene LaVelle']),
+    new Card ("Who is Winston named after?","Dr. Harold Winston",["Winston Hill", "Winston Churchill", "Nobody"]),
+    new Card ("Which of these character concepts was explored by Blizzard before eventually being abandoned?","Jetpack Cat",['Super Intelligent Hampster', 'Laser Snake', 'Psychic Badger']),
+    new Card ("What is Baptiste's country of origin?","Haiti",['France', 'Quebec', 'Papua New Guinea']),
+    new Card ("Widowmaker was originally kidnapped by Talon as part of a plot to kill who?","Her husband",['Her brother', 'The head of Overwatch', 'Captain Ana Amari']),
+    new Card ("Which Overwatch hero is the daughter of a founding member of Overwatch who was at one time presumed dead?","Phara", ['Brigitte', 'Sombra', 'Widowmaker']),
+    new Card ("What was D.va's career before she became a Mekka pilot?","Pro Gamer",['Racecar Driver', 'Modle', 'Actress']),
+    new Card ("Before becoming 'Reaper,' Gabriel Reyes had, at one time, been referred to by what other moniker?","Soldier 24",['Soldier 76', 'Soldier 13', 'The Statueless One']),
+    new Card ("The 'Doomfist' featured as a playable hero in Overwatch is the ____ person to carry that title.",'Third',['First', 'Second', 'Fourth']),
+    new Card ("Ashe is the leader of the _______ Gang.","Deadlock",['Rough Riders', 'Omnicca', 'Robertson']),
+]);
 
-    {"What is Widowmaker's real name?" : ['Amélie LaCroix', 'Natasha Romanoff', 'Alison Guillard', 'Adalene LaVelle'],
-    "Who is Winston named after?" : ["Winston Hill", "Winston Churchill", "Dr. Harold Winston", "Nobody"], 
-    "Which of these character concepts was explored by Blizzard before eventually being abandoned?" : ['Jetpack Cat', 'Super Intelligent Hampster', 'Laser Snake', 'Psychic Badger'],
-    "What is Baptiste's country of origin?" : ['Cuba', 'Haiti', 'France', 'Quebec'],
-    "Widowmaker was originally kidnapped by Talon as part of a plot to kill who?" : ['Her husband', 'Her brother', 'The head of Overwatch', 'Captain Ana Amari'],
-    "Which Overwatch hero is the daughter of a founding member of Overwatch?" : ['Phara', 'Brigitte', 'Sombra', 'Both A and B'],
-    "What was D.va's career before she became a Mekka pilot?" : ['Racecar Driver', 'Modle', 'Pro Gamer', 'Actress'],
-    "Before becoming 'Reaper,' Gabriel Reyes had, at one time, been referred to by what other moniker?" : ['Soldier 76', 'Soldier 24', 'Soldier 13', 'The Statueless One'],
-    "The 'Doomfist' featured as a playable hero in Overwatch is the ____ person to carry that title." : ['First', 'Second', 'Third', 'Fourth'],
-    "Ashe is the leader of the _______ Gang." : ['Rough Riders', 'Omnicca', 'Robertson', 'Deadlock']},
-
-    {"What is Widowmaker's real name?" : 0, 
-    "Who is Winston named after?": 2, 
-    "Which of these character concepts was explored by Blizzard before eventually being abandoned?" : 0,
-    "What is Baptiste's country of origin?" : 1, 
-    "Widowmaker was originally kidnapped by Talon as part of a plot to kill who?": 0,
-    "Which Overwatch hero is the daughter of a founding member of Overwatch?" : 3,
-    "What was D.va's career before she became a Mekka pilot?" : 2,
-    "Before becoming 'Reaper,' Gabriel Reyes had, at one time, been referred to by what other moniker?" : 1,
-    "The 'Doomfist' featured as a playable hero in Overwatch is the ____ person to carry that title." : 2,
-    "Ashe is the leader of the _______ Gang." : 3},
-
-    3);
 
 // Choose deck here
-testDeck.shuffle(); // Shuffle it
-var currentGame = new Game(testDeck,15); // Create game object with chosen deck
+owDeck.shuffle(); // Shuffle it
+var currentGame = new Game(owDeck,15); // Create game object with chosen deck
 
 
 // Run Game (no need to eddit this:):
