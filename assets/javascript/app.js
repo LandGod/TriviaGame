@@ -1,8 +1,23 @@
-class Card {
+function shuffle(arr) {
+    // Takes an array and makes random swaps between the locations of various indexes.
+    let oldval, shuffi;
+    for (let i = 0; i < arr.length; i++) {
+        shuffi = Math.round(Math.random() * i);
+        oldval = arr[i];
+        arr[i] = arr[shuffi];
+        arr[shuffi] = oldval;
+    };
+};
 
-    constructor(question, answers, correctAnswer) {
+class Card {
+    // A card object consists of a question, a single correct answer, and 3 incorrect answers.
+    // While the Card class can theoretically handle more than 3 incorrect answers (for a total of 4 answers),
+    // the Game class does not current support more than 4 questions
+    constructor(question, correctAnswer, answers) {
         this.question = question;
         this.answers = answers;
+        this.answers.push(correctAnswer);
+        shuffle(answers);
         this.correctAnswer = this.answers.indexOf(correctAnswer);
     }
 };
@@ -18,16 +33,8 @@ class Deck {
         this.cards = cardArray
         this.length = cardArray.length;
 
-        // The shuffle method shuffles this.questions into a random order
-        this.shuffle = function() {
-            let oldval, shuffi;
-            for (let i = 0; i < this.length; i++) {
-                shuffi = Math.round(Math.random() * i);
-                oldval = this.cards[i];
-                this.cards[i] = this.cards[shuffi];
-                this.cards[shuffi] = oldval;
-            };
-        };
+        // The shuffle method calls the shuffle function on the this.cards array.
+        this.shuffle = () =>  {shuffle(this.cards);};
     }
 };
 
@@ -180,9 +187,9 @@ class Game {
 
 // Test Deck:
 testDeck = new Deck('test trivia deck', [
-    new Card('Who was the 42nd POTUS?',['Barack Obama','Bill Clinton','Ricky Boby','Hillary Clinton'],'Barack Obama'),
-    new Card('What is 2+2?',['1','2','3','4'],'4'),
-    new Card('Say my name.',['Heimler','Greg','Heisenberg','Walter'],'Heisenberg'),
+    new Card('Who was the 42nd POTUS?','Barack Obama',['Bill Clinton','Ricky Boby','Hillary Clinton']),
+    new Card('What is 2+2?','4',['1','2','3']),
+    new Card('Say my name.','Heisenberg',['Heimler','Greg','Walter']),
 ]);
 
 //Overwatch Deck
